@@ -5,7 +5,7 @@ $(document).ready(function() {
 $(document).ready(function() {
 
 init();
-initbricks();
+walkerHead();
 $(document).keydown(onKeyDown);
 $(document).keyup(onKeyUp);
 $(document).mousemove(onMouseMove);
@@ -20,6 +20,7 @@ var dy = -4;
 var ctx;
 var wdt;
 var hgt;
+
 var paddlex;
 var paddleh = 10;
 var paddlew = 75;
@@ -28,7 +29,7 @@ var leftDown = false;
 var canvasMinX = 0;
 var canvasMaxX = 0;
 var intervalId = 0;
-var bricks;
+var heads;
 var Nrows = 5;
 var Ncols = 5;
 var brickwidth = (wdt/Ncols) - 1;
@@ -51,7 +52,7 @@ canvasMaxX = canvasMinX + wdt;
 intervalId = setInterval(draw, 10);//this makes the ball move around, gives the illusion of movement
 }
 
-function circle(x, y, r) {
+function weapon(x, y, r) {
   ctx.beginPath();
   ctx.arc(x, y, r, 0, Math.PI*2, true);
   ctx.closePath();
@@ -63,7 +64,7 @@ function rect(x, y, w, h){
   ctx.rect(x, y, w, h);
   ctx.closePath();
   ctx.fill();
-}//this draw the rectangle the circle lives in
+}//this draw the rectangle the weapon lives in
 
 function clear() {
   ctx.fillStyle = backcolor;
@@ -91,12 +92,12 @@ function onMouseMove(evt) {
   }
 }
 
-function initbricks () {
-  bricks = new Array(Nrows);
+function walkerHead () {
+  heads = new Array(Nrows);
   for (i = 0; i < Nrows; i++) {
-    bricks[i] = new Array(Ncols);
+    heads[i] = new Array(Ncols);
     for (j=0; j < Ncols; j++) {
-      bricks[i][j] = 1;
+      heads[i][j] = 1;
     }
   }
 }
@@ -104,32 +105,32 @@ function draw() {
   ctx.fillStyle = backcolor;
   clear();
   ctx.fillStyle = ballcolor;
-  circle(x, y, ballr);
+  weapon(x, y, ballr);
 
   if(rightDown) paddlex += 5;
   else if (leftDown) paddlex -= 5;
   ctx.fillStyle = paddlecolor;
   rect(paddlex, hgt-paddleh, paddlew, paddleh);
-  //drawbricks
+  //drawheads
   for (i = 0; i < Nrows; i++){
     ctx.fillStyle = rowcolors[i];
   for(j = 0; j < Ncols; j++) {
-    if(bricks[i][j] == 1) {
+    if(heads[i][j] == 1) {
       rect((j * (brickwidth + padding)) + padding,
            (i * (brickheight + padding)) + padding,
            brickwidth, brickheight);
       }
     }
   }
-//if you hit bricks
+//if you hit heads
 rowheight = brickheight + padding;
 colwidth = brickwidth + padding;
 row = Math.floor(y/rowheight);
 col = Math.floor(x/colwidth);
 //if you do, reverse ball, mark brick as broken
-if (y < Nrows * rowheight && row >= 0 && col >= 0 && bricks[row][col] == 1) {
+if (y < Nrows * rowheight && row >= 0 && col >= 0 && heads[row][col] == 1) {
   dy = -dy;
-  bricks[row][col] = 0;
+  heads[row][col] = 0;
 }
 
   if (x + dx  + ballr > wdt || x + dx -ballr < 0)
@@ -148,3 +149,39 @@ if (y < Nrows * rowheight && row >= 0 && col >= 0 && bricks[row][col] == 1) {
     y += dy;
 
 }
+
+// var audioElement = document.createElement('audio');
+// audioElement.setAttribute('src', 'Media/The Walking Dead Theme.mp3');
+// audioElement.setAttribute('autoplay', 'autoplay');
+//
+// $.get();
+// audioElement.addEventListener("load", function(){
+//   audioElement.Play();
+// }, true);
+//
+// $('.Play').click(function (){
+//   audioElement.Play();
+// });
+//
+// $('.Pause').click(function(){
+//   audioElement.Pause();
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//track when you win(score), once you win player 2 start

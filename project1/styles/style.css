@@ -1,15 +1,28 @@
 
 
+#body{
+  background-image: url(http://i.imgur.com/n8eSLTA.jpg);
+  background-size: contain;
+}
 
-
-#header{
-font-family: 'Cabin Sketch', cursive;
+#title{
+font-family: 'Nosifer', cursive;
+font-size: 4em;
+text-align: center;
+text-shadow: 6px 6px 8px black;
+color: rgb(62, 125, 19);
+display: block;
+margin-left: auto;
+margin-right: auto;
 
 
 }
 
 
 #canvas{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   height: 500px;
   width: 500px;
   border: 2px solid black;
