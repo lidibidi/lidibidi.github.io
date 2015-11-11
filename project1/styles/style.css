@@ -1,0 +1,17 @@
+
+
+
+
+#header{
+font-family: 'Cabin Sketch', cursive;
+
+
+}
+
+
+#canvas{
+  height: 500px;
+  width: 500px;
+  border: 2px solid black;
+  background-color: rgba(116, 93, 106, 0.32);
+}
