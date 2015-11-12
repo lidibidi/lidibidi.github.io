@@ -135,6 +135,10 @@ if (y < Nrows * rowheight && row >= 0 && col >= 0 && heads[row][col] == 1) {
   if (heads[row][col] = 0);
     score++;
     $('#score').text('Score: ' +score);
+    if(score > 24){
+      alert("You Win!!!");
+      document.location.reload();
+    }
 }
 
   if (x + dx  + ballr > wdt || x + dx -ballr < 0)
@@ -146,8 +150,24 @@ if (y < Nrows * rowheight && row >= 0 && col >= 0 && heads[row][col] == 1) {
       dx = 8 * ((x-(paddlex+paddlew/2))/paddlew);
     dy = -dy;
   }
-    else if (y + dy + ballr > hgt)
-      clearInterval(intervalId);
+  else{
+    lives --;
+    $('#lives').text('Lives: ' +lives);
+    if(lives == 0) {
+      alert("Game Over, press ok to try again");
+      document.location.reload();
+
+    }
+    else{
+      x = wdt/2;
+      y = hgt -30;
+      dx = 3;
+      dy = -3;
+      paddleX = (wdt-paddlew)/2;
+    }
+  }
+    // else if (y + dy + ballr > hgt)
+    //   clearInterval(intervalId);
       // alert('Game over!');
     }
     x += dx;
