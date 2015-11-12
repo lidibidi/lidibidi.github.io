@@ -21,7 +21,7 @@ var wdt;
 var hgt;
 
 var paddlex;
-var paddleh = 15;
+var paddleh = 10;
 var paddlew = 75;
 var rightDown = false;
 var leftDown = false;
@@ -39,6 +39,8 @@ var rowcolors = ["#5f7842", "#32533f", "#99956d", "#75796e", "#86745a" ];
 var paddlecolor = "#030000";
 var ballcolor = "#60c10a";
 var backcolor = "rgba(36, 32, 32, 0.5)";
+var score = '0';
+var lives = '3';
 
 function init(){
 ctx = $('#canvas')[0].getContext("2d");
@@ -104,7 +106,7 @@ function draw() {
   ctx.fillStyle = backcolor;
   clear();
   ctx.fillStyle = ballcolor;
-  weapon(x, y, ballr);//creates the path the weapon goes in(illusion)
+  weapon(x, y, ballr);//creates the path the weapon goes in(illusion og)
 
   if(rightDown) paddlex += 5;
   else if (leftDown) paddlex -= 5;
@@ -130,6 +132,9 @@ col = Math.floor(x/colwidth);
 if (y < Nrows * rowheight && row >= 0 && col >= 0 && heads[row][col] == 1) {
   dy = -dy;
   heads[row][col] = 0;
+  if (heads[row][col] = 0);
+    score++;
+    $('#score').text('Score: ' +score);
 }
 
   if (x + dx  + ballr > wdt || x + dx -ballr < 0)
@@ -185,3 +190,13 @@ if (y < Nrows * rowheight && row >= 0 && col >= 0 && heads[row][col] == 1) {
 
 
 //track when you win(score), once you win player 2 start
+
+
+
+
+
+// var firstIMG = new Image();
+//    firstIMG.onload = function() {
+//    ctx.drawImage(firstIMG, xvalue, yvalue);
+//    }
+//    firstIMG.src = firstIMGsrc;
