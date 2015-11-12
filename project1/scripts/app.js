@@ -175,9 +175,9 @@ if (y < Nrows * rowheight && row >= 0 && col >= 0 && heads[row][col] == 1) {
 
 }
 
-// var audioElement = document.createElement('audio');
-// audioElement.setAttribute('src', 'Media/The Walking Dead Theme.mp3');
-// audioElement.setAttribute('autoplay', 'autoplay');
+var audioElement = document.createElement('audio');
+audioElement.setAttribute('src', 'Media/The Walking Dead Theme.mp3');
+audioElement.setAttribute('autoplay', 'autoplay');
 //
 // $.get();
 // audioElement.addEventListener("load", function(){
