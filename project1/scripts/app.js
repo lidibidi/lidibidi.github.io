@@ -1,8 +1,7 @@
 $(document).ready(function() {
 
-});//end of document.ready
 
-$(document).ready(function() {
+
 
 init();
 walkerHead();
@@ -10,7 +9,7 @@ $(document).keydown(onKeyDown);
 $(document).keyup(onKeyUp);
 $(document).mousemove(onMouseMove);
 
-});
+});//end of document.ready
 
 // all of the variables
 var x = 25;
@@ -22,24 +21,24 @@ var wdt;
 var hgt;
 
 var paddlex;
-var paddleh = 10;
+var paddleh = 15;
 var paddlew = 75;
 var rightDown = false;
 var leftDown = false;
 var canvasMinX = 0;
 var canvasMaxX = 0;
 var intervalId = 0;
-var heads;
+var heads; //(bricks)
 var Nrows = 5;
 var Ncols = 5;
 var brickwidth = (wdt/Ncols) - 1;
-var brickheight = 15;
+var brickheight = 30;
 var padding = 1 ;
 var ballr = 10;
 var rowcolors = ["#5f7842", "#32533f", "#99956d", "#75796e", "#86745a" ];
 var paddlecolor = "#030000";
 var ballcolor = "#60c10a";
-var backcolor = "rgba(249, 246, 246, 0.96)";
+var backcolor = "rgba(36, 32, 32, 0.5)";
 
 function init(){
 ctx = $('#canvas')[0].getContext("2d");
@@ -105,7 +104,7 @@ function draw() {
   ctx.fillStyle = backcolor;
   clear();
   ctx.fillStyle = ballcolor;
-  weapon(x, y, ballr);
+  weapon(x, y, ballr);//creates the path the weapon goes in(illusion)
 
   if(rightDown) paddlex += 5;
   else if (leftDown) paddlex -= 5;
@@ -144,6 +143,7 @@ if (y < Nrows * rowheight && row >= 0 && col >= 0 && heads[row][col] == 1) {
   }
     else if (y + dy + ballr > hgt)
       clearInterval(intervalId);
+      // alert('Game over!');
     }
     x += dx;
     y += dy;
