@@ -14,8 +14,8 @@ $(document).mousemove(onMouseMove);
 // all of the variables
 var x = 25;
 var y = 250;
-var dx = 1.5;
-var dy = -4;
+var dx = -2;
+var dy = 2;
 var ctx;
 var wdt;
 var hgt;
