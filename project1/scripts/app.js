@@ -154,7 +154,7 @@ if (y < Nrows * rowheight && row >= 0 && col >= 0 && heads[row][col] == 1) {
     lives --;
     $('#lives').text('Lives: ' +lives);
     if(lives == 0) {
-      alert("Game Over, press ok to try again");
+      alert("Game Over, Click 'OK' to try again");
       document.location.reload();
 
     }
